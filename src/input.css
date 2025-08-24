@@ -1,0 +1,142 @@
+@import "tailwindcss";
+
+/* google font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+        body {
+            font-family: "Poppins", sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        #hero-section { 
+            background-image: url('/explore/images/cover.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat; 
+        }
+
+        .no-scroll {
+        overflow: hidden;
+        }
+
+
+        /* Optional: Add a smooth transition for the underline and bold state */
+        .nav-link {
+            transition: all 0.2s ease-in-out;
+        }
+        /* Style for the active link (JavaScript will add this class) */
+        .active {
+            font-weight: medium;
+            text-decoration: underline;
+            text-underline-offset: 4px; /* Adjust spacing of the underline */
+        }
+
+        .popup-overlay {
+            background-color: rgba(0, 0, 0, 0.75);
+        }
+
+        
+
+     
+        .skeleton-box {
+        background-color: #e2e8f0; /* a light gray color */
+        border-radius: 0.5rem; /* rounded-lg */
+        animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        @keyframes pulse {
+        0%, 100% {
+            opacity: 1;
+        }
+        50% {
+            opacity: .5;
+        }
+        }
+
+     
+        
+
+/* Default Light Mode */
+body {
+  background-color: white;
+  color: black;
+}
+
+/* Dark Mode */
+.dark body {
+  background-color: #121212; /* Tailwind gray-900 */
+  color: #f9fafb; /* Tailwind gray-50 */
+}
+
+/* Header / Nav */
+.dark nav {
+  background-color: #121212; /* gray-800 */
+  color: #f9fafb;
+}
+.dark nav a {
+  color: #d1d5db; /* gray-300 */
+}
+.dark nav a:hover {
+  color: #f23a3a; /* red-400 */
+}
+.dark .shadow-md,
+.dark .shadow-sm {
+  box-shadow: 0 2px 6px rgba(0,0,0,0.6);
+}
+
+/* Dropdown menus */
+.dark .group-hover\\:block {
+  background-color: #f23a3a;
+  color: #f23a3a;
+}
+.dark .group-hover\\:block a:hover {
+  background-color: #374151; /* gray-700 */
+}
+
+/* Inputs & forms */
+.dark input,
+.dark textarea {
+  background-color: #121212;
+  color: #f9fafb;
+  border: 1px solid #5f3b3b;
+}
+.dark input::placeholder {
+  color: #9ca3af; /* gray-400 */
+}
+
+/* Buttons */
+.dark button {
+  color: #f9fafb;
+}
+
+.dark button:hover {
+  color: #cf2c2c; /* blue-700 */
+}
+
+/* Cards, gallery items, popups */
+.dark .bg-white {
+  background-color: #121212 !important; /* override */
+  color: #f9fafb !important;
+}
+.dark .bg-gray-100 {
+  background-color: #374151 !important;
+}
+.dark .bg-gray-200 {
+  background-color: #4b5563 !important;
+}
+.dark .bg-gray-300 {
+  background-color: #6b7280 !important;
+}
+.dark main .h-12 {
+    border: 1px solid #5f3b3b;
+    box-shadow: #5f3b3b;
+}
+.dark nav{
+    border-bottom: 1px solid #5f3b3b;
+}
+.dark .block{
+    background-color: #121212;
+}
+        
+    

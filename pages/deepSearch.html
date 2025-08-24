@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deep Search</title>
+        <link rel="stylesheet" href="../src/output.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="shortcut icon" href="../images/exploreLogo.png" type="image/x-icon" />
+</head>
+<body>
+    
+    <header id="navigation-menu" class="sticky top-0 z-50">
+    <nav class="bg-white px-6 py-4 flex items-center justify-between shadow-sm">
+        <!-- Logo -->
+         <div class="flex items-center space-x-2">
+          <a href="../index.html" class="flex items-center space-x-4">
+          <img src="../images/exploreLogo.png" alt="logo" class="h-10">
+          </a>
+          <a href="../index.html" class="flex items-center space-x-4">
+          <img src="../images/logo.png" alt="logo" class="h-10">
+          </a>
+         </div>
+         
+        
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex items-center space-x-8">
+
+        <a href="../index.html" class="font-medium hover:text-red-500 transition-colors text-lg">Home</a>
+
+        <!-- Collection Dropdown -->
+        <div class="relative group p-2">
+            <button class="flex items-center font-medium hover:text-red-500 transition-colors text-lg">
+            Collection
+            <i class="fa-solid fa-chevron-down ml-1 text-sm"></i>
+            </button>
+            <div class="absolute hidden group-hover:block bg-white shadow-md rounded-md mt-2 w-48 py-2 z-10">
+            <a href="#" class="block px-4 py-2 hover:bg-gray-100 transition-colors hover:text-red-500">Deep Search</a>
+            <a href="#" id="uploadBtn" class="block px-4 py-2 hover:bg-gray-100 transition-colors hover:text-red-500">Upload Image</a>
+            <a href="./generateImage.html" class="block px-4 py-2 hover:bg-gray-100 transition-colors hover:text-red-500">Generate Image</a>
+            </div>
+        </div>
+
+        <!-- toggle theme mode -->
+        <button id="theme-toggle" class="p-2 rounded-full hover:bg-amber-500 transition-colors">
+        <i id="theme-icon" class="fa-solid fa-sun text-lg "></i>
+        </button>
+
+        <button class="bg-green-500 text-white px-4 py-2 rounded-full text-lg hover:bg-green-600 transition-colors shadow-md" id="uploadBtn">Upload</button>
+        </div>
+
+        
+        <!-- Mobile Hamburger -->
+
+            <button id="mobile-menu-btn" class="md:hidden p-2 text-gray-700 hover:bg-gray-100 rounded-lg">
+            <i class="fa-solid fa-bars text-2xl"></i>
+            </button>
+    </nav>
+    
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="absolute w-full hidden md:hidden bg-white shadow-md border-t">
+            <a href="../index.html" class="block px-6 py-3 font-medium hover:bg-gray-100 transition-colors">Home</a>
+            <div class="">
+            <button class="w-full flex justify-between items-center px-6 py-3 font-medium hover:bg-gray-100 transition-colors" id="mobile-collection-btn">
+                Collection
+                <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div id="mobile-collection" class="hidden bg-gray-50">
+                <a href="#" class="block px-8 py-2 hover:bg-gray-200 hover:text-red-500">Deep Search</a>
+                <a href="#" id="uploadBth" class="block px-8 py-2 hover:bg-gray-200 hover:text-red-500">Upload Image</a>
+                <a href="./generateImage.html" class="block px-8 py-2 hover:bg-gray-200 hover:text-red-500">Generate Image</a>
+            </div>
+            </div>
+<!-- toggle theme mode -->
+        <button id="theme-toggle" class="p-6 rounded-full hover:bg-amber-500 transition-colors">
+        <i id="theme-icon" class="fa-solid fa-sun text-lg "></i>
+        </button>
+            <button id="uploadBtn" class="m-4 w-[90%] bg-green-500 text-white px-4 py-2 rounded-full text-lg hover:bg-green-600 transition-colors shadow-md">Upload</button>
+        </div>
+
+    </header>
+
+
+    <main id="main-container" >
+        <div class="sticky top-16 z-20 bg-white shadow-sm ">
+  
+            <section>
+                <div class="container mx-auto px-4 py-4 flex justify-center ">
+                    <form name="search" id="search-form" class="flex w-full max-w-2xl backdrop-blur-md rounded-full">
+                        <input type="text" id="search-box" class="flex-grow px-4 sm:px-6 py-3 text-base sm:text-lg border border-gray-300 rounded-l-full focus:outline-none focus:ring-4 focus:ring-green-600 focus:border-transparent transition-all duration-300" placeholder="Search for photos...">
+                        <button type="submit" id="search-btn" class="px-4 sm:px-6 py-3 sm:py-4 bg-green-600 text-white text-base sm:text-lg rounded-r-full hover:bg-gray-600 focus:outline-none focus:ring-4 focus:ring-blue-500 focus:ring-offset-2 transition-colors duration-300"><i class="fa-solid fa-search"></i>
+                        </button>
+                    </form>
+                </div>
+            </section>
+    
+            <section id="hero-section" class="hidden relative bg-cover bg-center py-10  items-center justify-center">
+                <!-- Overlay for better text visibility -->
+                <div class="absolute inset-0 bg-black/40"></div>
+
+                <div id="hero-content" class="relative z-10 container mx-auto text-center px-4">
+                <!-- Title -->
+                <h1 id="text" class="text-white text-3xl sm:text-4xl md:text-6xl font-bold mb-4 leading-snug">Search Images</h1>
+                <!-- Subtitle -->
+                <p id="sub-text" class="relative px-2 sm:px-4 pb-[40px] pt-[20px] text-base sm:text-lg md:text-xl font-light capitalize tracking-wide text-white max-w-2xl mx-auto">The best royalty-free images you can find here.
+                    <span class="absolute bottom-[-10px] left-1/2 h-2 w-2 -translate-x-1/2 transform rounded-full bg-white"></span>
+                    <span class="absolute bottom-0 left-1/2 h-[1px] w-1/4 -translate-x-1/2 transform bg-white"></span>
+                </p>
+
+                <!-- Search box -->
+                <form name="search" class="mt-6 sm:mt-8 md:mt-12 flex justify-center w-full">
+                    <input id="search-box" type="text" placeholder="Search image" class="w-full sm:w-3/4 md:w-1/2 h-12 px-4 rounded-full border-none text-black capitalize outline-none shadow-md focus:ring-2 focus:ring-black bg-white"
+                    autocomplete="off"/>
+                </form>
+
+                <!-- Action buttons -->
+                <div
+                    class="mt-6 flex flex-col sm:flex-row flex-wrap justify-center gap-3 sm:gap-4 ">
+                    <!-- Deep Search -->
+                    <a href="./deepSearch.html"
+                    class="h-12 px-6 rounded-full bg-white text-black capitalize shadow-md flex items-center justify-center hover:bg-green-600 hover:text-white focus:ring-2 focus:ring-green-500 transition duration-300">
+                    <i class="fa-solid fa-magnifying-glass-plus mr-2"></i> Deep Search
+                    </a>
+
+                    <!-- Upload Image -->
+                    <button id="uploadBtn" class="h-12 px-6 rounded-full bg-white text-black capitalize shadow-md flex items-center justify-center hover:bg-green-600 hover:text-white focus:ring-2 focus:ring-green-500 transition duration-300">
+                    <i class="fa-solid fa-image mr-2"></i> Upload Image
+                    </button>
+                    <input type="file" class="hidden" id="upload-image" accept="image/*"/>
+
+                    <!-- Generate Image -->
+                    <a href="./generateImage.html" class="h-12 px-6 rounded-full bg-white text-black capitalize shadow-md flex items-center justify-center hover:bg-green-600 hover:text-white focus:ring-2 focus:ring-green-500 transition duration-300">
+                    <i class="fa-solid fa-wand-magic-sparkles mr-2"></i> Generate Image
+                    </a>
+                </div>
+                </div>
+            </section>
+
+            <section id="fitler-btn">
+                <nav class="border-b border-gray-300 p-6  ">
+                        <ul id="nav-list" class="flex space-x-8 text-gray-600 overflow-x-auto whitespace-nowrap ">
+                            <li>
+                                <a href="#" class="nav-link text-lg hover:underline hover:text-black " data-category="featured">Feature</a>
+                            </li>
+                            <li>
+                                <a href="#" class="nav-link hover:underline hover:text-black text-lg" data-category="wallpapers">Wallpaper</a>
+                            </li>
+                            <li>
+                                <a href="#" class="nav-link hover:underline hover:text-black text-lg" data-category="3d-renders">3D Render</a>
+                            </li>
+                            <li>
+                                <a href="#" class="nav-link hover:underline hover:text-black text-lg" data-category="textures">Texture</a>
+                            </li>
+                            <li>
+                                <a href="#" class="nav-link hover:underline hover:text-black text-lg" data-category="travel">Travel</a>
+                            </li>
+                            <li>
+                                <a href="#" class="nav-link hover:underline hover:text-black text-lg" data-category="season">Season</a>
+                            </li>
+                            <li>
+                                <a href="#" class="nav-link hover:underline hover:text-black text-lg" data-category="occasion">Occasion</a>
+                            </li>
+                            <li>
+                                <a href="#" class="nav-link hover:underline hover:text-black text-lg" data-category="food">Food</a>
+                            </li>
+                            <li>
+                                <a href="#" class="nav-link hover:underline hover:text-black text-lg" data-category="house">House</a>
+                            </li>
+                            <li>
+                                <a href="#" class="nav-link hover:underline hover:text-black text-lg" data-category="technology">Technology</a>
+                            </li>
+                            <li>
+                                <a href="#" class="nav-link hover:underline hover:text-black text-lg" data-category="fashion">Fashion</a>
+                            </li>
+                            <li>
+                                <a href="#" class="nav-link hover:underline hover:text-black text-lg" data-category="vehicle">Vehicle</a>
+                            </li>
+                            <li>
+                                <a href="#" class="nav-link hover:underline hover:text-black text-lg" data-category="animation">Animation</a>
+                            </li>
+                            <li>
+                                <a href="#" class="nav-link hover:underline hover:text-black text-lg" data-category="holiday">Holiday</a>
+                            </li>
+                            <li>
+                                <a href="#" class="nav-link hover:underline hover:text-black text-lg" data-category="architecture">Architecture</a>
+                            </li>
+                            <li>
+                                <a href="#" class="nav-link hover:underline hover:text-black text-lg" data-category="landscape">Landscape</a>
+                            </li>
+                        </ul>
+                </nav>
+            </section>
+            
+        </div>
+
+        <section id="popupImage-section" class="" >
+                <!-- <div class="fixed inset-0 bg-black bg-opacity-80 z-50 flex items-center justify-center p-6 transition-opacity duration-300 hidden" id="image-popup"> -->
+                <div id="image-popup" class="flex fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%]  shadow-2xl rounded-2xl z-50 justify-center items-center bg-white opacity-0 transition-opacity duration-300">
+
+                    
+                    <div id="close-btn" class="absolute top-[10px] left-[20px] w-[30px] h-[30px]  cursor-pointer"><i class="fa-solid fa-xmark text-2xl text-red-600"></i></div>
+
+                    <a id="download-btn" href="#" download class="capitalize px-4 py-2 bg-green-600 text-white rounded-full absolute top-[10px] right-[20px] z-10"><i class="fa-solid fa-arrow-up-from-bracket mr-2"></i>Free Download</a>
+
+                    <img src="" class="large-img h-[80%] w-auto max-w-[80%] object-contain rounded-md" alt="Popup Image">
+
+                    <button id="pre-btn" class="absolute top-1/2 left-[20px] transform -translate-y-1/2 bg-white p-2 rounded-full shadow"><i class="fa-solid fa-chevron-left"></i></button>
+
+                    <button id="nxt-btn" class="absolute top-1/2 right-[20px] transform -translate-y-1/2 bg-white p-2 rounded-full shadow"><i class="fa-solid fa-chevron-right"></i></button>
+
+
+
+                
+                </div>
+
+                
+        </section>
+
+        <section id="gallery" class="gallery w-full h-full p-6 sm:columns-2 md:columns-3 lg:columns-4 gap-6 gap-y-6">
+        </section>
+
+        <section id="skeletonLoader" class="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-6 p-6">
+            <div class="mb-6 inline-block w-full">
+                <div class="rounded-xl overflow-hidden bg-gray-200 animate-pulse">
+                    <div class="h-72 bg-gray-300"></div>
+                </div>
+            </div>
+            <div class="mb-6 inline-block w-full">
+                <div class="rounded-xl overflow-hidden bg-gray-200 animate-pulse">
+                    <div class="h-48 bg-gray-300"></div>
+                </div>
+            </div>
+            <div class="mb-6 inline-block w-full">
+                <div class="rounded-xl overflow-hidden bg-gray-200 animate-pulse">
+                    <div class="h-96 bg-gray-300"></div>
+                </div>
+            </div>
+            <div class="mb-6 inline-block w-full">
+                <div class="rounded-xl overflow-hidden bg-gray-200 animate-pulse">
+                    <div class="h-72 bg-gray-300"></div>
+                </div>
+            </div>
+            <div class="mb-6 inline-block w-full">
+                <div class="rounded-xl overflow-hidden bg-gray-200 animate-pulse">
+                    <div class="h-48 bg-gray-300"></div>
+                </div>
+            </div>
+            <div class="mb-6 inline-block w-full">
+                <div class="rounded-xl overflow-hidden bg-gray-200 animate-pulse">
+                    <div class="h-96 bg-gray-300"></div>
+                </div>
+            </div>
+            <div class="mb-6 inline-block w-full">
+                <div class="rounded-xl overflow-hidden bg-gray-200 animate-pulse">
+                    <div class="h-48 bg-gray-300"></div>
+                </div>
+            </div>
+            <div class="mb-6 inline-block w-full">
+                <div class="rounded-xl overflow-hidden bg-gray-200 animate-pulse">
+                    <div class="h-72 bg-gray-300"></div>
+                </div>
+            </div>
+            <div class="mb-6 inline-block w-full">
+                <div class="rounded-xl overflow-hidden bg-gray-200 animate-pulse">
+                    <div class="h-96 bg-gray-300"></div>
+                </div>
+            </div>
+        </section>
+
+        <div id="loadingIndicator" class="text-center py-8 hidden">
+            <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-gray-900 mx-auto dark:border-gray-100"></div>
+            <p class="text-gray-600 mt-4 dark:text-gray-300">Loading images...</p>
+        </div>
+        <div class="text-center py-5 text-lg text-red-600 hidden" id="errorMessages"></div>
+
+    </main>
+
+    
+    <script src="../js/deepSearch.js"></script>
+
+</body>
+</html>
