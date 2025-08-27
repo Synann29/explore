@@ -10,7 +10,6 @@ import { GoogleGenerativeAI } from "https://esm.run/@google/generative-ai";
   const aiText = document.getElementById("aiText");
   const aiImage = document.getElementById("aiImage");
   const resultCard = document.getElementById("resultCard");// multiple upload buttons
-  const fileInput = document.getElementById('upload-image');
   const mobileMenuBtn = document.getElementById("mobile-menu-btn");
   const mobileMenu = document.getElementById("mobile-menu");
   const mobileCollectionBtn = document.getElementById("mobile-collection-btn");
@@ -47,51 +46,6 @@ themeToggleBtn.addEventListener("click", () => {
     }
 });
 
-
-// === Upload Flow ===
-async function uploadToCloudinary(file) {
-    const url = `https://api.cloudinary.com/v1_1/${cloudName}/upload`;
-    const formData = new FormData();
-    formData.append('file', file);
-    formData.append('upload_preset', unsignedUploadPreset);
-
-    const res = await fetch(url, { method: 'POST', body: formData });
-    if (!res.ok) throw new Error('Failed to upload image to Cloudinary');
-    return res.json();
-}
-
-async function getImaggaTags(imageUrl) {
-    const auth = btoa(`${imaggaApiKey}:${imaggaApiSecret}`);
-    const apiUrl = `https://api.imagga.com/v2/tags?image_url=${encodeURIComponent(imageUrl)}`;
-
-    const res = await fetch(apiUrl, {
-        headers: { Authorization: `Basic ${auth}` }
-    });
-
-    if (!res.ok) throw new Error('Failed to get tags from Imagga');
-
-    const data = await res.json();
-    return data.result.tags;
-}
-
-async function searchUnsplash(query) {
-    const url = `https://api.unsplash.com/search/photos?client_id=${access_key}&query=${encodeURIComponent(query)}&per_page=20`;
-    const res = await fetch(url);
-    if (!res.ok) throw new Error('Unsplash API error');
-    const data = await res.json();
-    return data.results;
-}
-
-function displayImages(images) {
-    gallery.innerHTML = '';
-    images.forEach(img => {
-        const imgEl = document.createElement('img');
-        imgEl.src = img.urls.small;
-        imgEl.alt = img.alt_description || 'Unsplash Image';
-        imgEl.className = 'gallery-img rounded-2xl cursor-pointer w-full object-cover mb-6';
-        gallery.appendChild(imgEl);
-    });
-}
 
 
   // Mobile menu toggle

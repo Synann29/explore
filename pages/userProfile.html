@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link rel="stylesheet" href="../src/output.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+    <header id="navigation-menu" class="sticky top-0 z-50">
+        <nav class="bg-white px-6 py-4 flex items-center justify-between shadow-sm">
+            <!-- Logo -->
+         <div class="flex items-center space-x-2">
+          <a href="../index.html" class="flex items-center space-x-4">
+          <img src="../images/exploreLogo.png" alt="logo" class="h-10">
+          </a>
+          <a href="../index.html" class="flex items-center space-x-4">
+          <img src="../images/logo.png" alt="logo" class="h-10">
+          </a>
+         </div>
+            
+            <div class="hidden md:flex items-center space-x-8">
+                <button class="p-2 text-gray-700 hover:bg-gray-100 rounded-full transition-colors">
+                    <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
+                </button>
+                <a href="#" class="font-medium hover:text-red-500 transition-colors text-lg">Home</a>
+                
+                <div class="relative group p-2">
+                    <button class="flex items-center font-medium hover:text-red-500 transition-colors text-lg">
+                        Collection
+                        <i class="fa-solid fa-chevron-down ml-1 text-sm"></i>
+                    </button>
+                    <div class="absolute hidden group-hover:block bg-white shadow-md rounded-md mt-2 w-48 py-2 z-10">
+                        <a href="#" class="block px-4 py-2 hover:bg-gray-100 transition-colors hover:text-red-500">Deep Search</a>
+                        <a href="#" id="uploadBtnDesktop" class="hidden block px-4 py-2 hover:bg-gray-100 transition-colors hover:text-red-500">Upload Image</a>
+                        <a href="#" class="block px-4 py-2 hover:bg-gray-100 transition-colors hover:text-red-500">Generate Image</a>
+                    </div>
+                </div>
+
+                <button id="theme-toggle" class="p-2 rounded-full hover:bg-amber-500 transition-colors">
+                    <i id="theme-icon" class="fa-solid fa-sun text-lg"></i>
+                </button>
+
+                <button id="loginBtn" class="bg-red-600 text-white px-3 py-1.5 rounded-full text-base hover:bg-red-700 transition-colors shadow-md">
+                    Login
+                </button>
+                <div id="profileBtn" class="hidden bg-gray-200 w-10 h-10 rounded-full hover:bg-gray-300 transition-colors flex items-center justify-center">
+                    <img src="images/profile.png" alt="Profile" class="rounded-full">
+                </div>
+            </div>
+            
+            <button id="mobile-menu-btn" class="md:hidden p-2 text-gray-700 hover:bg-gray-100 rounded-lg">
+                <i class="fa-solid fa-bars text-2xl"></i>
+            </button>
+        </nav>
+    
+        <div id="mobile-menu" class="absolute w-full hidden md:hidden bg-white shadow-md border-t">
+            <a href="#" class="block px-6 py-3 font-medium hover:bg-gray-100 transition-colors">Home</a>
+            <div class="">
+                <button class="w-full flex justify-between items-center px-6 py-3 font-medium hover:bg-gray-100 transition-colors" id="mobile-collection-btn">
+                    Collection
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div id="mobile-collection" class="hidden bg-gray-50">
+                    <a href="#" class="block px-8 py-2 hover:bg-gray-200 hover:text-red-500">Deep Search</a>
+                    <a href="#" id="uploadBtnMobile" class="hidden block px-8 py-2 hover:bg-gray-200 hover:text-red-500">Upload Image</a>
+                    <a href="#" class="block px-8 py-2 hover:bg-gray-200 hover:text-red-500">Generate Image</a>
+                </div>
+            </div>
+            <button id="theme-toggle-mobile" class="p-6 rounded-full hover:bg-amber-500 transition-colors">
+                <i id="theme-icon-mobile" class="fa-solid fa-sun text-lg"></i>
+            </button>
+            <button id="loginBtn-mobile" class="m-4 w-[90%] bg-red-600 text-white px-3 py-1.5 rounded-full text-base hover:bg-red-700 transition-colors shadow-md">Login</button>
+            <button id="profileBtn-mobile" class="hidden m-4 w-[90%] bg-gray-200 text-gray-800 px-3 py-1.5 rounded-full text-base hover:bg-gray-300 transition-colors shadow-md">
+                Profile
+            </button>
+        </div>
+   
+        <section id="authModal" class="fixed inset-0 z-50 modal-container">
+        <button id="closeModal" class="absolute top-8 right-8 text-gray-100 hover:text-white text-3xl font-bold transition-transform hover:scale-110 z-[101]">&times;</button>
+        
+        <div id="auth-container">
+            <div class="form-panels-container">
+                <div id="LoginForm" class="form-panel sign-in-form">
+                    <h1 class="text-4xl font-extrabold text-gray-800 mb-6">Login</h1>
+                    <div class="flex space-x-4 mb-8">
+                        <a href="#" class="w-10 h-10 border border-gray-300 rounded-full flex justify-center items-center text-gray-500 hover:text-red-500 transition-colors duration-200"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="w-10 h-10 border border-gray-300 rounded-full flex justify-center items-center text-gray-500 hover:text-red-500 transition-colors duration-200"><i class="fab fa-google"></i></a>
+                        <a href="#" class="w-10 h-10 border border-gray-300 rounded-full flex justify-center items-center text-gray-500 hover:text-red-500 transition-colors duration-200"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                    <p class="text-sm text-gray-500 mb-6">or use your account</p>
+                    <form class="w-full max-w-sm space-y-4" onsubmit="handleLogin(event)">
+                        <input type="text" placeholder="Name" class="w-full px-5 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-red-500 bg-gray-100 transition-all duration-200">
+                        <input type="password" placeholder="Password" class="w-full px-5 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-red-500 bg-gray-100 transition-all duration-200">
+                        <a href="#" class="text-sm text-gray-500 hover:text-red-500 hover:underline transition-colors duration-200 block text-center mt-2">Forgot your password?</a>
+                        <button type="submit" class="w-full bg-red-500 text-white font-semibold py-3 rounded-full mt-4 hover:bg-red-600 transition-colors duration-200 shadow-md">LOG IN</button>
+                    </form>
+                </div>
+                
+                <div id="RegisterForm" class="form-panel sign-up-form opacity-0 absolute top-0 left-0 w-full h-full">
+                    <h1 class="text-4xl font-extrabold text-gray-800 mb-6">Create Account</h1>
+                    <div class="flex space-x-4 mb-8">
+                        <a href="#" class="w-10 h-10 border border-gray-300 rounded-full flex justify-center items-center text-gray-500 hover:text-red-500 transition-colors duration-200"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="w-10 h-10 border border-gray-300 rounded-full flex justify-center items-center text-gray-500 hover:text-red-500 transition-colors duration-200"><i class="fab fa-google"></i></a>
+                        <a href="#" class="w-10 h-10 border border-gray-300 rounded-full flex justify-center items-center text-gray-500 hover:text-red-500 transition-colors duration-200"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                    <p class="text-sm text-gray-500 mb-6">or use your email for registration</p>
+                    <form class="w-full max-w-sm space-y-4" onsubmit="handleRegister(event)">
+                        <input id="username" type="text" placeholder="Name" class="w-full px-5 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-red-500 bg-gray-100 transition-all duration-200">
+                        <input id="password" type="password" placeholder="Password" class="w-full px-5 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-red-500 bg-gray-100 transition-all duration-200">
+                        <button type="submit" class="w-full bg-red-500 text-white font-semibold py-3 rounded-full mt-4 hover:bg-red-600 transition-colors duration-200 shadow-md" >REGISTER</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="overlay-container">
+                <div class="overlay rounded-3xl">
+                    <div class="overlay-panel overlay-left">
+                        <h1 class="text-4xl font-extrabold mb-4">Welcome Back!</h1>
+                        <p class="text-sm leading-relaxed text-center mb-6">To keep connected with us, please login with your personal info</p>
+                        <button id="signInBtn" class="bg-transparent border border-white text-white font-bold py-3 px-8 rounded-full hover:bg-white hover:text-red-500 transition-colors duration-200">LOG IN</button>
+                    </div>
+                    <div class="overlay-panel overlay-right">
+                        <h1 class="text-4xl font-extrabold mb-4">Hello, Friend!</h1>
+                        <p class="text-sm leading-relaxed text-center mb-6">Enter your personal details and start your journey with us</p>
+                        <button id="signUpBtn" class="bg-transparent border border-white text-white font-bold py-3 px-8 rounded-full hover:bg-white hover:text-red-500 transition-colors duration-200"onsubmit="handleLogin(event)">REGISTER</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    </header>
+
+
+<main class="container mx-auto px-4 py-8 mt-10">
+    <div class="flex flex-col md:flex-row items-start md:items-center space-y-6 md:space-y-0 md:space-x-8 mb-8">
+        <div class="flex-shrink-0 relative">
+            <div class="w-28 h-28 md:w-32 md:h-32 rounded-full overflow-hidden bg-gray-200">
+                <img src="../images/profile.png" alt="User Avatar" class="w-full h-full object-cover">
+            </div>
+        </div>
+        
+        <div class="flex-grow">
+            <h1 class="text-3xl font-bold text-gray-800">user name</h1>
+            <p class="text-gray-500">0 following</p>
+            
+            <div class="flex space-x-4 mt-4">
+                <button class="bg-gray-200 text-gray-800 px-4 py-2 rounded-full text-lg hover:bg-gray-300 transition-colors shadow-md">
+                    Share
+                </button>
+                <button class="bg-gray-200 text-gray-800 px-4 py-2 rounded-full text-lg hover:bg-gray-300 transition-colors shadow-md">
+                    Edit profile
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="border-b border-gray-200 mb-8">
+        <ul class="flex space-x-8 text-lg font-medium">
+            <li class="pb-2 cursor-pointer border-b-2 border-gray-800">
+                <a href="#" class="text-gray-800">created</a>
+            </li>
+            <li class="pb-2 cursor-pointer hover:border-b-2 hover:border-gray-400">
+                <a href="#" class="text-gray-500 hover:text-gray-800 transition-colors">saved</a>
+            </li>
+            <li class="pb-2 cursor-pointer hover:border-b-2 hover:border-gray-400">
+                <a href="#" class="text-gray-500 hover:text-gray-800 transition-colors">favorited</a>
+            </li>
+        </ul>
+    </div>
+    
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div class="bg-gray-100 rounded-lg overflow-hidden shadow-md">
+            <img src="https://placehold.co/400x400/fff/000?text=Image+1" alt="Image 1" class="w-full h-auto object-cover">
+        </div>
+        <div class="bg-gray-100 rounded-lg overflow-hidden shadow-md">
+            <img src="https://placehold.co/400x400/fff/000?text=Image+2" alt="Image 2" class="w-full h-auto object-cover">
+        </div>
+        <div class="bg-gray-100 rounded-lg overflow-hidden shadow-md">
+            <img src="https://placehold.co/400x400/fff/000?text=Image+3" alt="Image 3" class="w-full h-auto object-cover">
+        </div>
+        <div class="bg-gray-100 rounded-lg overflow-hidden shadow-md">
+            <img src="https://placehold.co/400x400/fff/000?text=Image+4" alt="Image 4" class="w-full h-auto object-cover">
+        </div>
+        <div class="bg-gray-100 rounded-lg overflow-hidden shadow-md">
+            <img src="https://placehold.co/400x400/fff/000?text=Image+5" alt="Image 5" class="w-full h-auto object-cover">
+        </div>
+        <div class="bg-gray-100 rounded-lg overflow-hidden shadow-md">
+            <img src="https://placehold.co/400x400/fff/000?text=Image+6" alt="Image 6" class="w-full h-auto object-cover">
+        </div>
+    </div>
+</main>
+
+    <script src="../js/userProfile.js"></script>
+
+</body>
+</html>

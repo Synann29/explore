@@ -131,5 +131,151 @@ body {
 .dark .block{
     background-color: #121212;
 }
+     
+/* Default: Login visible */
+#authContainer {
+  transform: translateX(0);
+}
+
+/* When in register mode */
+#authOverlay.show-register #authContainer {
+  transform: translateX(-400px);
+}
+
+/* Popup animation (appear) */
+#authOverlay.show #authPopup {
+  transform: scale(1);
+  opacity: 1;
+}
+
+ /* Styles for the modal backdrop and centering */
+        .modal-container {
+            background-color: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px);
+            transition: opacity 0.3s ease-in-out;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .modal-container.is-active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        /* Container for the animated forms */
+        #auth-container {
+            position: relative;
+            width: 100%;
+            max-width: 900px;
+            height: 600px;
+            background-color: #fff;
+            border-radius: 2rem;
+            box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+            overflow: hidden;
+        }
+
+        /* Container for the form panels */
+        .form-panels-container {
+            position: absolute;
+            top: 0;
+            height: 100%;
+            width: 50%;
+            transition: transform 0.6s ease-in-out;
+        }
+
+        /* The two form panels */
+        .form-panel {
+            position: absolute;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 2rem;
+            transition: all 0.6s ease-in-out;
+        }
         
+        .form-panel.sign-in-form {
+            left: 0;
+            opacity: 1;
+        }
+
+        .form-panel.sign-up-form {
+            left: 100%;
+            opacity: 0;
+        }
+
+        /* Styles for the overlay panel that slides */
+        .overlay-container {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 50%;
+            height: 100%;
+            overflow: hidden;
+            transition: transform 0.6s ease-in-out;
+            z-index: 100;
+        }
+
+        .overlay {
+            position: relative;
+            left: -100%;
+            height: 100%;
+            width: 200%;
+            background: linear-gradient(to right, #FF4B2B, #FF416C);
+            color: #fff;
+            transform: translateX(0);
+            transition: transform 0.6s ease-in-out;
+            display: flex;
+        }
+
+        .overlay-panel {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 2.5rem;
+            transition: transform 0.6s ease-in-out;
+        }
+
+        /* Animation classes for the entire UI */
+        .right-panel-active .form-panels-container {
+            transform: translateX(100%);
+        }
+
+        .right-panel-active .overlay-container {
+            transform: translateX(-100%);
+        }
+
+        .right-panel-active .overlay {
+            transform: translateX(50%);
+        }
+
+        /* Removed the transform on overlay-left panel to keep it centered */
+        /* .right-panel-active .overlay-panel.overlay-left {
+            transform: translateX(20%);
+        } */
+
+        .right-panel-active .overlay-panel.overlay-right {
+            transform: translateX(0);
+        }
+
+        .right-panel-active .form-panel.sign-in-form {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+
+        .right-panel-active .form-panel.sign-up-form {
+            transform: translateX(-100%);
+            opacity: 1;
+        }
+
     
