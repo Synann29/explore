@@ -1,0 +1,281 @@
+@import "tailwindcss";
+
+/* google font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+        body {
+            font-family: "Poppins", sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        .no-scroll {
+        overflow: hidden;
+        }
+
+
+        /* Optional: Add a smooth transition for the underline and bold state */
+        .nav-link {
+            transition: all 0.2s ease-in-out;
+        }
+        /* Style for the active link (JavaScript will add this class) */
+        .active {
+            font-weight: medium;
+            text-decoration: underline;
+            text-underline-offset: 4px; /* Adjust spacing of the underline */
+        }
+
+        .popup-overlay {
+            background-color: rgba(0, 0, 0, 0.75);
+        }
+
+        
+
+     
+        .skeleton-box {
+        background-color: #e2e8f0; /* a light gray color */
+        border-radius: 0.5rem; /* rounded-lg */
+        animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        @keyframes pulse {
+        0%, 100% {
+            opacity: 1;
+        }
+        50% {
+            opacity: .5;
+        }
+        }
+
+     
+        
+
+/* Default Light Mode */
+body {
+  background-color: white;
+  color: black;
+}
+
+/* Dark Mode */
+.dark body {
+  background-color: #121212; /* Tailwind gray-900 */
+  color: #f9fafb; /* Tailwind gray-50 */
+}
+
+/* Header / Nav */
+.dark nav {
+  background-color: #121212; /* gray-800 */
+  color: #f9fafb;
+}
+.dark nav a {
+  color: #d1d5db; /* gray-300 */
+}
+.dark nav a:hover {
+  color: #f23a3a; /* red-400 */
+}
+.dark .shadow-md,
+.dark .shadow-sm {
+  box-shadow: 0 2px 6px rgba(0,0,0,0.6);
+}
+
+/* Dropdown menus */
+.dark .group-hover\\:block {
+  background-color: #f23a3a;
+  color: #f23a3a;
+}
+.dark .group-hover\\:block a:hover {
+  background-color: #374151; /* gray-700 */
+}
+
+/* Inputs & forms */
+.dark input,
+.dark textarea {
+  background-color: #121212;
+  color: #f9fafb;
+  border: 1px solid #5f3b3b;
+}
+.dark input::placeholder {
+  color: #9ca3af; /* gray-400 */
+}
+
+/* Buttons */
+.dark button {
+  color: #f9fafb;
+}
+
+.dark button:hover {
+  color: #cf2c2c; /* blue-700 */
+}
+
+/* Cards, gallery items, popups */
+.dark .bg-white {
+  background-color: #121212 !important; /* override */
+  color: #f9fafb !important;
+}
+.dark .bg-gray-100 {
+  background-color: #374151 !important;
+}
+.dark .bg-gray-200 {
+  background-color: #4b5563 !important;
+}
+.dark .bg-gray-300 {
+  background-color: #6b7280 !important;
+}
+.dark main .h-12 {
+    border: 1px solid #5f3b3b;
+    box-shadow: #5f3b3b;
+}
+.dark nav{
+    border-bottom: 1px solid #5f3b3b;
+}
+.dark .block{
+    background-color: #121212;
+}
+     
+/* Default: Login visible */
+#authContainer {
+  transform: translateX(0);
+}
+
+/* When in register mode */
+#authOverlay.show-register #authContainer {
+  transform: translateX(-400px);
+}
+
+/* Popup animation (appear) */
+#authOverlay.show #authPopup {
+  transform: scale(1);
+  opacity: 1;
+}
+
+ /* Styles for the modal backdrop and centering */
+        .modal-container {
+            background-color: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px);
+            transition: opacity 0.3s ease-in-out;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .modal-container.is-active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        /* Container for the animated forms */
+        #auth-container {
+            position: relative;
+            width: 100%;
+            max-width: 900px;
+            height: 600px;
+            background-color: #fff;
+            border-radius: 2rem;
+            box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+            overflow: hidden;
+        }
+
+        /* Container for the form panels */
+        .form-panels-container {
+            position: absolute;
+            top: 0;
+            height: 100%;
+            width: 50%;
+            transition: transform 0.6s ease-in-out;
+        }
+
+        /* The two form panels */
+        .form-panel {
+            position: absolute;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 2rem;
+            transition: all 0.6s ease-in-out;
+        }
+        
+        .form-panel.sign-in-form {
+            left: 0;
+            opacity: 1;
+        }
+
+        .form-panel.sign-up-form {
+            left: 100%;
+            opacity: 0;
+        }
+
+        /* Styles for the overlay panel that slides */
+        .overlay-container {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 50%;
+            height: 100%;
+            overflow: hidden;
+            transition: transform 0.6s ease-in-out;
+            z-index: 100;
+        }
+
+        .overlay {
+            position: relative;
+            left: -100%;
+            height: 100%;
+            width: 200%;
+            background: linear-gradient(to right, #FF4B2B, #FF416C);
+            color: #fff;
+            transform: translateX(0);
+            transition: transform 0.6s ease-in-out;
+            display: flex;
+        }
+
+        .overlay-panel {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 2.5rem;
+            transition: transform 0.6s ease-in-out;
+        }
+
+        /* Animation classes for the entire UI */
+        .right-panel-active .form-panels-container {
+            transform: translateX(100%);
+        }
+
+        .right-panel-active .overlay-container {
+            transform: translateX(-100%);
+        }
+
+        .right-panel-active .overlay {
+            transform: translateX(50%);
+        }
+
+        /* Removed the transform on overlay-left panel to keep it centered */
+        /* .right-panel-active .overlay-panel.overlay-left {
+            transform: translateX(20%);
+        } */
+
+        .right-panel-active .overlay-panel.overlay-right {
+            transform: translateX(0);
+        }
+
+        .right-panel-active .form-panel.sign-in-form {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+
+        .right-panel-active .form-panel.sign-up-form {
+            transform: translateX(-100%);
+            opacity: 1;
+        }
+
+    
