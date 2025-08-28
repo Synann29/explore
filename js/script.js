@@ -23,13 +23,10 @@ const skeletonLoader = document.getElementById('skeletonLoader');
 const uploadBtns = document.querySelectorAll('#uploadBtn'); // multiple upload buttons
 const fileInput = document.getElementById('upload-image');
 const navLinks = document.querySelectorAll("#nav-list .nav-link");
-<<<<<<< HEAD
-=======
 const mobileMenuBtn = document.getElementById("mobile-menu-btn");
 const mobileMenu = document.getElementById("mobile-menu");
 const mobileCollectionBtn = document.getElementById("mobile-collection-btn");
 const mobileCollection = document.getElementById("mobile-collection");
->>>>>>> 5d3b7bb73a2b77f8bf3fc0b0e653e7836b417336
 const themeToggleBtn = document.getElementById("theme-toggle");
 const themeIcon = document.getElementById("theme-icon");
 
@@ -41,10 +38,6 @@ let currentSearchQuery = 'random';
 let isFetching = false;
 
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 5d3b7bb73a2b77f8bf3fc0b0e653e7836b417336
 // === Dark/Light Mode Toggle ===
 // Check saved theme on load
 if (localStorage.getItem("theme") === "dark" || 
@@ -58,7 +51,6 @@ if (localStorage.getItem("theme") === "dark" ||
     themeIcon.classList.add("fa-sun");
 }
 
-<<<<<<< HEAD
 
 // Toggle theme on click
 themeToggleBtn.addEventListener("click", () => {
@@ -68,26 +60,11 @@ themeToggleBtn.addEventListener("click", () => {
         localStorage.setItem("theme", "dark");
     } else {
         themeIcon.classList.replace("fa-moon", "fa-sun");
-=======
-// Toggle theme on click
-themeToggleBtn.addEventListener("click", () => {
-    document.documentElement.classList.toggle("dark");
-    if (document.documentElement.classList.contains("dark")) {
-        themeIcon.classList.remove("fa-sun");
-        themeIcon.classList.add("fa-moon");
-        localStorage.setItem("theme", "dark");
-    } else {
-        themeIcon.classList.remove("fa-moon");
-        themeIcon.classList.add("fa-sun");
->>>>>>> 5d3b7bb73a2b77f8bf3fc0b0e653e7836b417336
         localStorage.setItem("theme", "light");
     }
 });
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 5d3b7bb73a2b77f8bf3fc0b0e653e7836b417336
 // === Show/Hide Loading & Errors ===
 const showLoading = () => {
     // Hide the gallery and show the skeleton loader
@@ -131,8 +108,6 @@ document.addEventListener("click", function (event) {
     }
 });
 
-<<<<<<< HEAD
-=======
 // Mobile menu toggle
 mobileMenuBtn.addEventListener("click", () => {
     mobileMenu.classList.toggle("hidden");
@@ -141,7 +116,6 @@ mobileMenuBtn.addEventListener("click", () => {
 mobileCollectionBtn.addEventListener("click", () => {
     mobileCollection.classList.toggle("hidden");
 });
->>>>>>> 5d3b7bb73a2b77f8bf3fc0b0e653e7836b417336
 
 // === Fetch Images from Unsplash ===
 async function getImages(query = 'random', page = 1) {
@@ -178,10 +152,6 @@ async function getImages(query = 'random', page = 1) {
 
 // === Render Images to Gallery ===
 function renderImages(images) {
-<<<<<<< HEAD
-     const authModal = document.getElementById("authModal");
-=======
->>>>>>> 5d3b7bb73a2b77f8bf3fc0b0e653e7836b417336
     images.forEach(item => {
         const card = document.createElement('div');
         card.className = 'relative group mb-6 rounded-2xl overflow-hidden break-inside-avoid';
@@ -223,11 +193,7 @@ function renderImages(images) {
 
         const download = document.createElement('a');
         download.href = '#';
-<<<<<<< HEAD
-        download.className = 'bg-red-500 hover:bg-red-600 text-white text-sm px-4 py-2 rounded-full';
-=======
         download.className = 'bg-green-500 hover:bg-green-600 text-white text-sm px-4 py-2 rounded-full';
->>>>>>> 5d3b7bb73a2b77f8bf3fc0b0e653e7836b417336
         download.innerHTML = `<i class="fa-solid fa-download mr-1"></i>Download`;
         download.addEventListener('click', e => {
             e.preventDefault();
@@ -242,37 +208,10 @@ function renderImages(images) {
         const bottomOverlay = document.createElement('div');
         bottomOverlay.className = 'flex justify-end text-white space-x-4';
         bottomOverlay.innerHTML = `
-<<<<<<< HEAD
-            <button class="liked-btn"><i class="fa-regular fa-heart text-xl cursor-pointer hover:text-red-500"></i></button>
-            <button class="save-btn"><i class="fa-regular fa-bookmark text-xl cursor-pointer hover:text-black"></i></button>
-        `;
-
-        // Select the button only inside this card
-        const likedBtn = bottomOverlay.querySelector('.liked-btn');
-        likedBtn.addEventListener('click', e => {
-            e.preventDefault();
-            if(localStorage.getItem('username') === null){
-                authModal.classList.add('is-active');
-            }else{
-                saveLiked(item);
-            }
-        });
-        const saveBtn = bottomOverlay.querySelector('.save-btn');
-        saveBtn.addEventListener('click', e => {
-            e.preventDefault();
-            if(localStorage.getItem('username') === null){
-                authModal.classList.add('is-active');
-            }else{
-                saveButton(item);
-            }
-        });
-
-=======
             <i class="fa-regular fa-heart text-xl cursor-pointer"></i>
             <i class="fa-regular fa-bookmark text-xl cursor-pointer"></i>
         `;
 
->>>>>>> 5d3b7bb73a2b77f8bf3fc0b0e653e7836b417336
         overlay.appendChild(topOverlay);
         overlay.appendChild(bottomOverlay);
 
@@ -282,28 +221,6 @@ function renderImages(images) {
     });
 }
 
-<<<<<<< HEAD
-function saveLiked(item) {
-    let liked = JSON.parse(localStorage.getItem('liked')) || [];
-    // Check if already liked (avoid duplicates)
-    const exists = liked.some(l => l.id === item.id);
-    if (!exists) {
-        liked.push(item);
-        localStorage.setItem('liked', JSON.stringify(liked));
-    }
-}
-function saveButton(item) {
-    let save = JSON.parse(localStorage.getItem('save')) || [];
-    // Check if already liked (avoid duplicates)
-    const exists = save.some(l => l.id === item.id);
-    if (!exists) {
-        save.push(item);
-        localStorage.setItem('save', JSON.stringify(save));
-    }
-}
-
-=======
->>>>>>> 5d3b7bb73a2b77f8bf3fc0b0e653e7836b417336
 // === Popup Logic ===
 function showPopup(item) {
     if (!item) return;
@@ -441,11 +358,7 @@ navList.addEventListener('click', e => {
 });
 
 // Search input Enter key triggers search
-<<<<<<< HEAD
 searchInput.addEventListener('keydown', e => {
-=======
-searchInput.addEventListener('keypress', e => {
->>>>>>> 5d3b7bb73a2b77f8bf3fc0b0e653e7836b417336
     if (e.key === 'Enter') {
         e.preventDefault();
         const term = searchInput.value.trim();
@@ -512,7 +425,6 @@ window.addEventListener('scroll', () => {
     }, 100);
 });
 
-<<<<<<< HEAD
 
 // Function to update the UI based on login status
 function updateAuthUI() {
@@ -594,16 +506,20 @@ function handleLogout() {
 
 // Event listeners for the entire page
 document.addEventListener('DOMContentLoaded', function() {
-    // DOM Elements
-    const gallery = document.querySelector('.gallery');
+    // Initial UI update on page load
+    updateAuthUI();
+    
+    // Get all necessary elements
+    const profileBtn = document.getElementById("profileBtn");
+    const profileBtnMobile = document.getElementById("profileBtn-mobile");
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+    const themeToggleMobileBtn = document.getElementById('theme-toggle-mobile');
+    const themeIconMobile = document.getElementById('theme-icon-mobile');
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
     const mobileCollectionBtn = document.getElementById('mobile-collection-btn');
     const mobileCollection = document.getElementById('mobile-collection');
-    const themeToggleBtn = document.getElementById("theme-toggle");
-    const themeIcon = document.getElementById("theme-icon");
-    const profileBtn = document.getElementById("profileBtn");
-    const profileBtnMobile = document.getElementById("profileBtn-mobile");
     const loginBtn = document.getElementById('loginBtn');
     const loginBtnMobile = document.getElementById('loginBtn-mobile');
     const authModal = document.getElementById('authModal');
@@ -612,43 +528,72 @@ document.addEventListener('DOMContentLoaded', function() {
     const signInBtn = document.getElementById('signInBtn');
     const signUpBtn = document.getElementById('signUpBtn');
 
-    // Update UI based on login status
-    updateAuthUI();
+    // Theme toggle logic
+    const toggleTheme = () => {
+        document.body.classList.toggle('bg-gray-800');
+        document.body.classList.toggle('text-white');
+        document.querySelector('nav').classList.toggle('bg-white');
+        document.querySelector('nav').classList.toggle('bg-gray-700');
+        document.querySelectorAll('a, button, span').forEach(el => {
+            if (el.id !== 'theme-toggle' && el.id !== 'theme-toggle-mobile') {
+                el.classList.toggle('text-gray-800');
+                el.classList.toggle('text-white');
+            }
+        });
+        if (themeIcon) themeIcon.classList.toggle('fa-sun');
+        if (themeIcon) themeIcon.classList.toggle('fa-moon');
+        if (themeIconMobile) themeIconMobile.classList.toggle('fa-sun');
+        if (themeIconMobile) themeIconMobile.classList.toggle('fa-moon');
+    };
 
-    // Theme toggle
-    themeToggleBtn?.addEventListener("click", () => {
-        const isDark = document.documentElement.classList.toggle("dark");
-        if (isDark) themeIcon.classList.replace("fa-sun", "fa-moon");
-        else themeIcon.classList.replace("fa-moon", "fa-sun");
+    if (themeToggleBtn) themeToggleBtn.addEventListener('click', toggleTheme);
+    if (themeToggleMobileBtn) themeToggleMobileBtn.addEventListener('click', toggleTheme);
+
+    // Mobile menu logic
+    if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', () => {
+        if (mobileMenu) mobileMenu.classList.toggle('hidden');
+    });
+    if (mobileCollectionBtn) mobileCollectionBtn.addEventListener('click', () => {
+        if (mobileCollection) mobileCollection.classList.toggle('hidden');
     });
 
-    // Mobile menu
-    mobileMenuBtn?.addEventListener('click', () => mobileMenu?.classList.toggle('hidden'));
-    mobileCollectionBtn?.addEventListener('click', () => mobileCollection?.classList.toggle('hidden'));
+    // Modal & Form Toggle Logic
+    const openModal = () => {
+        if (authModal) authModal.classList.add('is-active');
+    };
 
-    // Modal open/close
-    const openModal = () => authModal?.classList.add('is-active');
-    const closeModal = () => authModal?.classList.remove('is-active');
-    loginBtn?.addEventListener('click', openModal);
-    loginBtnMobile?.addEventListener('click', openModal);
-    closeModalBtn?.addEventListener('click', closeModal);
-    authModal?.addEventListener('click', e => { if (e.target === authModal) closeModal(); });
+    const closeModal = () => {
+        if (authModal) authModal.classList.remove('is-active');
+    };
 
-    // Form panel animation
-    signUpBtn?.addEventListener('click', () => authContainer?.classList.add('right-panel-active'));
-    signInBtn?.addEventListener('click', () => authContainer?.classList.remove('right-panel-active'));
+    if (loginBtn) loginBtn.addEventListener('click', openModal);
+    if (loginBtnMobile) loginBtnMobile.addEventListener('click', openModal);
+    if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
+    
+    // Close modal when clicking outside of the auth container
+    if (authModal) {
+        authModal.addEventListener('click', (event) => {
+            if (event.target === authModal) {
+                closeModal();
+            }
+        });
+    }
 
-    // Logout
-    profileBtn?.addEventListener('click', handleLogout);
-    profileBtnMobile?.addEventListener('click', handleLogout);
+    // Event listeners for the form animation
+    if (signUpBtn) signUpBtn.addEventListener('click', () => {
+        if (authContainer) authContainer.classList.add('right-panel-active');
+    });
+    if (signInBtn) signInBtn.addEventListener('click', () => {
+        if (authContainer) authContainer.classList.remove('right-panel-active');
+    });
 
-    // === INITIAL IMAGE FETCH ===
-    getImages("random");
+    // New event listeners for the profile buttons to handle logout
+    if (profileBtn) profileBtn.addEventListener('click', handleLogout);
+    if (profileBtnMobile) profileBtnMobile.addEventListener('click', handleLogout);
 });
 
 
 
-=======
->>>>>>> 5d3b7bb73a2b77f8bf3fc0b0e653e7836b417336
+
 // Initial fetch
 getImages("random");

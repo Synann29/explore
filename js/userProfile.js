@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // Get all necessary elements
 const profileBtn = document.getElementById("profileBtn");
 const profileBtnMobile = document.getElementById("profileBtn-mobile");
@@ -23,12 +24,39 @@ const gallery = document.getElementById('gallery');
 const saved_gallary_div = document.getElementById('saved-gallery');
 const uploadBtnDesktop = document.getElementById('uploadBtnDesktop');
 const uploadBtnMobile = document.getElementById('uploadBtnMobile');
+=======
+
+
+    // Get all necessary elements
+    const profileBtn = document.getElementById("profileBtn");
+    const profileBtnMobile = document.getElementById("profileBtn-mobile");
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+    const themeToggleMobileBtn = document.getElementById('theme-toggle-mobile');
+    const themeIconMobile = document.getElementById('theme-icon-mobile');
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileCollectionBtn = document.getElementById('mobile-collection-btn');
+    const mobileCollection = document.getElementById('mobile-collection');
+    const loginBtn = document.getElementById('loginBtn');
+    const loginBtnMobile = document.getElementById('loginBtn-mobile');
+    const authModal = document.getElementById('authModal');
+    const closeModalBtn = document.getElementById('closeModal');
+    const authContainer = document.getElementById('auth-container');
+    const signInBtn = document.getElementById('signInBtn');
+    const signUpBtn = document.getElementById('signUpBtn');
+>>>>>>> 5d3b7bb73a2b77f8bf3fc0b0e653e7836b417336
 
 
 // === Dark/Light Mode Toggle ===
 // Check saved theme on load
+<<<<<<< HEAD
 if (localStorage.getItem("theme") === "dark" ||
     (!localStorage.getItem("theme") && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+=======
+if (localStorage.getItem("theme") === "dark" || 
+   (!localStorage.getItem("theme") && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+>>>>>>> 5d3b7bb73a2b77f8bf3fc0b0e653e7836b417336
     document.documentElement.classList.add("dark");
     themeIcon.classList.remove("fa-sun");
     themeIcon.classList.add("fa-moon");
@@ -61,6 +89,7 @@ mobileCollectionBtn.addEventListener("click", () => {
     mobileCollection.classList.toggle("hidden");
 });
 
+<<<<<<< HEAD
 // Function to handle tab switching logic
 const switchTab = (activeLink, inactiveLink, galleryToShow, galleryToHide) => {
     activeLink.classList.add('active-link');
@@ -94,14 +123,23 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+=======
+>>>>>>> 5d3b7bb73a2b77f8bf3fc0b0e653e7836b417336
 
 
 // === Event Listeners ===
 
 
+<<<<<<< HEAD
 // Function to update the UI based on login status
 function updateAuthUI() {
     isLoggedIn = localStorage.getItem('isLoggedIn')
+=======
+
+// Function to update the UI based on login status
+function updateAuthUI() {
+
+>>>>>>> 5d3b7bb73a2b77f8bf3fc0b0e653e7836b417336
     if (isLoggedIn) {
         if (loginBtn) loginBtn.classList.add("hidden");
         if (loginBtnMobile) loginBtnMobile.classList.add("hidden");
@@ -155,11 +193,17 @@ function handleLogin(event) {
 
     if (loginUsername === usernameLogin && loginPassword === passwordLogin) {
         localStorage.setItem("isLoggedIn", "true");
+<<<<<<< HEAD
         localStorage.setItem("loggedInUser", loginUsername);
         updateAuthUI();
         alert("Login successful!");
         if (authModal) authModal.classList.remove('is-active');
         displayProfileUsername();
+=======
+        updateAuthUI();
+        alert("Login successful!");
+        if (authModal) authModal.classList.remove('is-active');
+>>>>>>> 5d3b7bb73a2b77f8bf3fc0b0e653e7836b417336
     } else {
         alert("Invalid username or password");
     }
@@ -168,6 +212,7 @@ function handleLogin(event) {
 // Handles the logout process
 function handleLogout() {
     localStorage.removeItem("isLoggedIn");
+<<<<<<< HEAD
     localStorage.removeItem("loggedInUser");
     updateAuthUI();
     alert("You have been logged out.");
@@ -182,14 +227,22 @@ function displayProfileUsername() {
     if (profileUsernameElement) {
         profileUsernameElement.textContent = loggedInUser ? loggedInUser : 'Unknown';
     }
+=======
+    updateAuthUI();
+    alert("You have been logged out.");
+>>>>>>> 5d3b7bb73a2b77f8bf3fc0b0e653e7836b417336
 }
 
 // Event listeners for the entire page
 document.addEventListener('DOMContentLoaded', function() {
     // Initial UI update on page load
     updateAuthUI();
+<<<<<<< HEAD
     // Display the username on page load
     displayProfileUsername();
+=======
+    
+>>>>>>> 5d3b7bb73a2b77f8bf3fc0b0e653e7836b417336
 
     // Theme toggle logic
     const toggleTheme = () => {
@@ -232,7 +285,11 @@ document.addEventListener('DOMContentLoaded', function() {
     if (loginBtn) loginBtn.addEventListener('click', openModal);
     if (loginBtnMobile) loginBtnMobile.addEventListener('click', openModal);
     if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> 5d3b7bb73a2b77f8bf3fc0b0e653e7836b417336
     // Close modal when clicking outside of the auth container
     if (authModal) {
         authModal.addEventListener('click', (event) => {
@@ -253,6 +310,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // New event listeners for the profile buttons to handle logout
     if (profileBtn) profileBtn.addEventListener('click', handleLogout);
     if (profileBtnMobile) profileBtnMobile.addEventListener('click', handleLogout);
+<<<<<<< HEAD
 
     const images = JSON.parse(localStorage.getItem('liked')) || [];
     const sample_image = document.getElementById('sample-image')
@@ -450,3 +508,7 @@ function toggleSaved(item) {
     }
     localStorage.setItem('save', JSON.stringify(saved)); // Corrected to 'save'
 }
+=======
+});
+
+>>>>>>> 5d3b7bb73a2b77f8bf3fc0b0e653e7836b417336
