@@ -23,10 +23,6 @@ const skeletonLoader = document.getElementById('skeletonLoader');
 const uploadBtns = document.querySelectorAll('#uploadBtn'); // multiple upload buttons
 const fileInput = document.getElementById('upload-image');
 const navLinks = document.querySelectorAll("#nav-list .nav-link");
-const mobileMenuBtn = document.getElementById("mobile-menu-btn");
-const mobileMenu = document.getElementById("mobile-menu");
-const mobileCollectionBtn = document.getElementById("mobile-collection-btn");
-const mobileCollection = document.getElementById("mobile-collection");
 const themeToggleBtn = document.getElementById("theme-toggle");
 const themeIcon = document.getElementById("theme-icon");
 
@@ -36,6 +32,7 @@ let allImages = [];
 let currentPage = 1;
 let currentSearchQuery = 'random';
 let isFetching = false;
+
 
 
 // === Dark/Light Mode Toggle ===
@@ -51,19 +48,19 @@ if (localStorage.getItem("theme") === "dark" ||
     themeIcon.classList.add("fa-sun");
 }
 
+
 // Toggle theme on click
 themeToggleBtn.addEventListener("click", () => {
-    document.documentElement.classList.toggle("dark");
-    if (document.documentElement.classList.contains("dark")) {
-        themeIcon.classList.remove("fa-sun");
-        themeIcon.classList.add("fa-moon");
+    const isDark = document.documentElement.classList.toggle("dark");
+    if (isDark) {
+        themeIcon.classList.replace("fa-sun", "fa-moon");
         localStorage.setItem("theme", "dark");
     } else {
-        themeIcon.classList.remove("fa-moon");
-        themeIcon.classList.add("fa-sun");
+        themeIcon.classList.replace("fa-moon", "fa-sun");
         localStorage.setItem("theme", "light");
     }
 });
+
 
 // === Show/Hide Loading & Errors ===
 const showLoading = () => {
@@ -108,14 +105,6 @@ document.addEventListener("click", function (event) {
     }
 });
 
-// Mobile menu toggle
-mobileMenuBtn.addEventListener("click", () => {
-    mobileMenu.classList.toggle("hidden");
-});
-
-mobileCollectionBtn.addEventListener("click", () => {
-    mobileCollection.classList.toggle("hidden");
-});
 
 // === Fetch Images from Unsplash ===
 async function getImages(query = 'random', page = 1) {
@@ -152,6 +141,7 @@ async function getImages(query = 'random', page = 1) {
 
 // === Render Images to Gallery ===
 function renderImages(images) {
+     const authModal = document.getElementById("authModal");
     images.forEach(item => {
         const card = document.createElement('div');
         card.className = 'relative group mb-6 rounded-2xl overflow-hidden break-inside-avoid';
@@ -193,7 +183,7 @@ function renderImages(images) {
 
         const download = document.createElement('a');
         download.href = '#';
-        download.className = 'bg-green-500 hover:bg-green-600 text-white text-sm px-4 py-2 rounded-full';
+        download.className = 'bg-red-500 hover:bg-red-600 text-white text-sm px-4 py-2 rounded-full';
         download.innerHTML = `<i class="fa-solid fa-download mr-1"></i>Download`;
         download.addEventListener('click', e => {
             e.preventDefault();
@@ -208,9 +198,29 @@ function renderImages(images) {
         const bottomOverlay = document.createElement('div');
         bottomOverlay.className = 'flex justify-end text-white space-x-4';
         bottomOverlay.innerHTML = `
-            <i class="fa-regular fa-heart text-xl cursor-pointer"></i>
-            <i class="fa-regular fa-bookmark text-xl cursor-pointer"></i>
+            <button class="liked-btn"><i class="fa-regular fa-heart text-xl cursor-pointer hover:text-red-500"></i></button>
+            <button class="save-btn"><i class="fa-regular fa-bookmark text-xl cursor-pointer hover:text-black"></i></button>
         `;
+
+        // Select the button only inside this card
+        const likedBtn = bottomOverlay.querySelector('.liked-btn');
+        likedBtn.addEventListener('click', e => {
+            e.preventDefault();
+            if(localStorage.getItem('username') === null){
+                authModal.classList.add('is-active');
+            }else{
+                saveLiked(item);
+            }
+        });
+        const saveBtn = bottomOverlay.querySelector('.save-btn');
+        saveBtn.addEventListener('click', e => {
+            e.preventDefault();
+            if(localStorage.getItem('username') === null){
+                authModal.classList.add('is-active');
+            }else{
+                saveButton(item);
+            }
+        });
 
         overlay.appendChild(topOverlay);
         overlay.appendChild(bottomOverlay);
@@ -219,6 +229,25 @@ function renderImages(images) {
         card.appendChild(overlay);
         gallery.appendChild(card);
     });
+}
+
+function saveLiked(item) {
+    let liked = JSON.parse(localStorage.getItem('liked')) || [];
+    // Check if already liked (avoid duplicates)
+    const exists = liked.some(l => l.id === item.id);
+    if (!exists) {
+        liked.push(item);
+        localStorage.setItem('liked', JSON.stringify(liked));
+    }
+}
+function saveButton(item) {
+    let save = JSON.parse(localStorage.getItem('save')) || [];
+    // Check if already liked (avoid duplicates)
+    const exists = save.some(l => l.id === item.id);
+    if (!exists) {
+        save.push(item);
+        localStorage.setItem('save', JSON.stringify(save));
+    }
 }
 
 // === Popup Logic ===
@@ -358,7 +387,7 @@ navList.addEventListener('click', e => {
 });
 
 // Search input Enter key triggers search
-searchInput.addEventListener('keypress', e => {
+searchInput.addEventListener('keydown', e => {
     if (e.key === 'Enter') {
         e.preventDefault();
         const term = searchInput.value.trim();
@@ -424,6 +453,141 @@ window.addEventListener('scroll', () => {
         }
     }, 100);
 });
+
+
+// Function to update the UI based on login status
+function updateAuthUI() {
+    const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+    const loginBtn = document.getElementById("loginBtn");
+    const loginBtnMobile = document.getElementById("loginBtn-mobile");
+    const profileBtn = document.getElementById("profileBtn");
+    const profileBtnMobile = document.getElementById("profileBtn-mobile");
+    const uploadBtnDesktop = document.getElementById("uploadBtnDesktop");
+    const uploadBtnMobile = document.getElementById("uploadBtnMobile");
+
+    if (isLoggedIn) {
+        if (loginBtn) loginBtn.classList.add("hidden");
+        if (loginBtnMobile) loginBtnMobile.classList.add("hidden");
+        if (profileBtn) profileBtn.classList.remove("hidden");
+        if (profileBtnMobile) profileBtnMobile.classList.remove("hidden");
+        if (uploadBtnDesktop) uploadBtnDesktop.classList.remove("hidden");
+        if (uploadBtnMobile) uploadBtnMobile.classList.remove("hidden");
+    } else {
+        if (loginBtn) loginBtn.classList.remove("hidden");
+        if (loginBtnMobile) loginBtnMobile.classList.remove("hidden");
+        if (profileBtn) profileBtn.classList.add("hidden");
+        if (profileBtnMobile) profileBtnMobile.classList.add("hidden");
+        if (uploadBtnDesktop) uploadBtnDesktop.classList.add("hidden");
+        if (uploadBtnMobile) uploadBtnMobile.classList.add("hidden");
+    }
+}
+
+// Handles the registration form submission
+function handleRegister(event) {
+    event.preventDefault();
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+    const authContainer = document.getElementById("auth-container");
+
+    if (!username || !password) {
+        alert("Please fill out all fields.");
+        return;
+    }
+
+    if (localStorage.getItem("username") === username) {
+        alert("This username is already taken. Please choose another.");
+        return;
+    }
+
+    localStorage.setItem("username", username);
+    localStorage.setItem("password", password);
+
+    alert("Registration successful! Please log in.");
+    if (authContainer) authContainer.classList.remove('right-panel-active');
+}
+
+// Handles the login form submission
+function handleLogin(event) {
+    event.preventDefault();
+    const loginUsername = document.querySelector("#LoginForm input[type='text']").value;
+    const loginPassword = document.querySelector("#LoginForm input[type='password']").value;
+    const authModal = document.getElementById("authModal");
+
+    const usernameLogin = localStorage.getItem("username");
+    const passwordLogin = localStorage.getItem("password");
+
+    if (loginUsername === usernameLogin && loginPassword === passwordLogin) {
+        localStorage.setItem("isLoggedIn", "true");
+        updateAuthUI();
+        alert("Login successful!");
+        if (authModal) authModal.classList.remove('is-active');
+    } else {
+        alert("Invalid username or password");
+    }
+}
+
+// Handles the logout process
+function handleLogout() {
+    localStorage.removeItem("isLoggedIn");
+    updateAuthUI();
+    alert("You have been logged out.");
+}
+
+// Event listeners for the entire page
+document.addEventListener('DOMContentLoaded', function() {
+    // DOM Elements
+    const gallery = document.querySelector('.gallery');
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileCollectionBtn = document.getElementById('mobile-collection-btn');
+    const mobileCollection = document.getElementById('mobile-collection');
+    const themeToggleBtn = document.getElementById("theme-toggle");
+    const themeIcon = document.getElementById("theme-icon");
+    const profileBtn = document.getElementById("profileBtn");
+    const profileBtnMobile = document.getElementById("profileBtn-mobile");
+    const loginBtn = document.getElementById('loginBtn');
+    const loginBtnMobile = document.getElementById('loginBtn-mobile');
+    const authModal = document.getElementById('authModal');
+    const closeModalBtn = document.getElementById('closeModal');
+    const authContainer = document.getElementById('auth-container');
+    const signInBtn = document.getElementById('signInBtn');
+    const signUpBtn = document.getElementById('signUpBtn');
+
+    // Update UI based on login status
+    updateAuthUI();
+
+    // Theme toggle
+    themeToggleBtn?.addEventListener("click", () => {
+        const isDark = document.documentElement.classList.toggle("dark");
+        if (isDark) themeIcon.classList.replace("fa-sun", "fa-moon");
+        else themeIcon.classList.replace("fa-moon", "fa-sun");
+    });
+
+    // Mobile menu
+    mobileMenuBtn?.addEventListener('click', () => mobileMenu?.classList.toggle('hidden'));
+    mobileCollectionBtn?.addEventListener('click', () => mobileCollection?.classList.toggle('hidden'));
+
+    // Modal open/close
+    const openModal = () => authModal?.classList.add('is-active');
+    const closeModal = () => authModal?.classList.remove('is-active');
+    loginBtn?.addEventListener('click', openModal);
+    loginBtnMobile?.addEventListener('click', openModal);
+    closeModalBtn?.addEventListener('click', closeModal);
+    authModal?.addEventListener('click', e => { if (e.target === authModal) closeModal(); });
+
+    // Form panel animation
+    signUpBtn?.addEventListener('click', () => authContainer?.classList.add('right-panel-active'));
+    signInBtn?.addEventListener('click', () => authContainer?.classList.remove('right-panel-active'));
+
+    // Logout
+    profileBtn?.addEventListener('click', handleLogout);
+    profileBtnMobile?.addEventListener('click', handleLogout);
+
+    // === INITIAL IMAGE FETCH ===
+    getImages("random");
+});
+
+
 
 // Initial fetch
 getImages("random");
