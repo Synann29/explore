@@ -23,13 +23,6 @@ const skeletonLoader = document.getElementById('skeletonLoader');
 const uploadBtns = document.querySelectorAll('#uploadBtn'); // multiple upload buttons
 const fileInput = document.getElementById('upload-image');
 const navLinks = document.querySelectorAll("#nav-list .nav-link");
-<<<<<<< HEAD
-=======
-const mobileMenuBtn = document.getElementById("mobile-menu-btn");
-const mobileMenu = document.getElementById("mobile-menu");
-const mobileCollectionBtn = document.getElementById("mobile-collection-btn");
-const mobileCollection = document.getElementById("mobile-collection");
->>>>>>> 5d3b7bb73a2b77f8bf3fc0b0e653e7836b417336
 const themeToggleBtn = document.getElementById("theme-toggle");
 const themeIcon = document.getElementById("theme-icon");
 
@@ -41,10 +34,7 @@ let currentSearchQuery = 'random';
 let isFetching = false;
 
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 5d3b7bb73a2b77f8bf3fc0b0e653e7836b417336
 // === Dark/Light Mode Toggle ===
 // Check saved theme on load
 if (localStorage.getItem("theme") === "dark" || 
@@ -58,7 +48,6 @@ if (localStorage.getItem("theme") === "dark" ||
     themeIcon.classList.add("fa-sun");
 }
 
-<<<<<<< HEAD
 
 // Toggle theme on click
 themeToggleBtn.addEventListener("click", () => {
@@ -68,26 +57,11 @@ themeToggleBtn.addEventListener("click", () => {
         localStorage.setItem("theme", "dark");
     } else {
         themeIcon.classList.replace("fa-moon", "fa-sun");
-=======
-// Toggle theme on click
-themeToggleBtn.addEventListener("click", () => {
-    document.documentElement.classList.toggle("dark");
-    if (document.documentElement.classList.contains("dark")) {
-        themeIcon.classList.remove("fa-sun");
-        themeIcon.classList.add("fa-moon");
-        localStorage.setItem("theme", "dark");
-    } else {
-        themeIcon.classList.remove("fa-moon");
-        themeIcon.classList.add("fa-sun");
->>>>>>> 5d3b7bb73a2b77f8bf3fc0b0e653e7836b417336
         localStorage.setItem("theme", "light");
     }
 });
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 5d3b7bb73a2b77f8bf3fc0b0e653e7836b417336
 // === Show/Hide Loading & Errors ===
 const showLoading = () => {
     // Hide the gallery and show the skeleton loader
@@ -131,17 +105,6 @@ document.addEventListener("click", function (event) {
     }
 });
 
-<<<<<<< HEAD
-=======
-// Mobile menu toggle
-mobileMenuBtn.addEventListener("click", () => {
-    mobileMenu.classList.toggle("hidden");
-});
-
-mobileCollectionBtn.addEventListener("click", () => {
-    mobileCollection.classList.toggle("hidden");
-});
->>>>>>> 5d3b7bb73a2b77f8bf3fc0b0e653e7836b417336
 
 // === Fetch Images from Unsplash ===
 async function getImages(query = 'random', page = 1) {
@@ -178,10 +141,7 @@ async function getImages(query = 'random', page = 1) {
 
 // === Render Images to Gallery ===
 function renderImages(images) {
-<<<<<<< HEAD
      const authModal = document.getElementById("authModal");
-=======
->>>>>>> 5d3b7bb73a2b77f8bf3fc0b0e653e7836b417336
     images.forEach(item => {
         const card = document.createElement('div');
         card.className = 'relative group mb-6 rounded-2xl overflow-hidden break-inside-avoid';
@@ -223,11 +183,7 @@ function renderImages(images) {
 
         const download = document.createElement('a');
         download.href = '#';
-<<<<<<< HEAD
         download.className = 'bg-red-500 hover:bg-red-600 text-white text-sm px-4 py-2 rounded-full';
-=======
-        download.className = 'bg-green-500 hover:bg-green-600 text-white text-sm px-4 py-2 rounded-full';
->>>>>>> 5d3b7bb73a2b77f8bf3fc0b0e653e7836b417336
         download.innerHTML = `<i class="fa-solid fa-download mr-1"></i>Download`;
         download.addEventListener('click', e => {
             e.preventDefault();
@@ -242,7 +198,6 @@ function renderImages(images) {
         const bottomOverlay = document.createElement('div');
         bottomOverlay.className = 'flex justify-end text-white space-x-4';
         bottomOverlay.innerHTML = `
-<<<<<<< HEAD
             <button class="liked-btn"><i class="fa-regular fa-heart text-xl cursor-pointer hover:text-red-500"></i></button>
             <button class="save-btn"><i class="fa-regular fa-bookmark text-xl cursor-pointer hover:text-black"></i></button>
         `;
@@ -267,12 +222,6 @@ function renderImages(images) {
             }
         });
 
-=======
-            <i class="fa-regular fa-heart text-xl cursor-pointer"></i>
-            <i class="fa-regular fa-bookmark text-xl cursor-pointer"></i>
-        `;
-
->>>>>>> 5d3b7bb73a2b77f8bf3fc0b0e653e7836b417336
         overlay.appendChild(topOverlay);
         overlay.appendChild(bottomOverlay);
 
@@ -282,7 +231,6 @@ function renderImages(images) {
     });
 }
 
-<<<<<<< HEAD
 function saveLiked(item) {
     let liked = JSON.parse(localStorage.getItem('liked')) || [];
     // Check if already liked (avoid duplicates)
@@ -302,8 +250,6 @@ function saveButton(item) {
     }
 }
 
-=======
->>>>>>> 5d3b7bb73a2b77f8bf3fc0b0e653e7836b417336
 // === Popup Logic ===
 function showPopup(item) {
     if (!item) return;
@@ -441,11 +387,7 @@ navList.addEventListener('click', e => {
 });
 
 // Search input Enter key triggers search
-<<<<<<< HEAD
 searchInput.addEventListener('keydown', e => {
-=======
-searchInput.addEventListener('keypress', e => {
->>>>>>> 5d3b7bb73a2b77f8bf3fc0b0e653e7836b417336
     if (e.key === 'Enter') {
         e.preventDefault();
         const term = searchInput.value.trim();
@@ -512,7 +454,6 @@ window.addEventListener('scroll', () => {
     }, 100);
 });
 
-<<<<<<< HEAD
 
 // Function to update the UI based on login status
 function updateAuthUI() {
@@ -648,7 +589,5 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-=======
->>>>>>> 5d3b7bb73a2b77f8bf3fc0b0e653e7836b417336
 // Initial fetch
 getImages("random");
