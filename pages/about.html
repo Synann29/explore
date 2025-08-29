@@ -1,0 +1,703 @@
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Explore</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <style>
+      body {
+            font-family: "Poppins", sans-serif;
+            background-color: #f8f9fa;
+        }
+      .team-member:hover .social-links {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .bg-cover-image {
+        background-image: url('../images/img1.jpg');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+      .card-icon {
+        background-color: #fcebeb; /* A light, reddish background */
+      }
+    </style>
+  </head>
+  <body class="bg-gray-200 ">
+
+    <header id="navigation-menu" class="sticky top-0 z-50">
+    <nav class="bg-white px-6 py-4 flex items-center justify-between shadow-sm">
+            <!-- Logo -->
+        <div class="flex items-center space-x-2">
+          <a href="../index.html" class="flex items-center space-x-4">
+          <img src="../images/exploreLogo.png" alt="logo" class="h-10">
+          </a>
+          <a href="../index.html" class="flex items-center space-x-4">
+          <img src="../images/logo.png" alt="logo" class="h-10">
+          </a>
+        </div>
+
+            <!-- menu bar  -->
+        <div class="hidden md:flex items-center space-x-8">
+             <a href="#" class="font-medium hover:text-red-500 transition-colors text-lg">About</a>
+            <a href="../pages/userProfile.html" class="font-medium hover:text-red-500 transition-colors text-lg">Profile</a>
+                
+            <div class="relative group p-2">
+                <button class="flex items-center font-medium hover:text-red-500 transition-colors text-lg">
+                        Collection
+                        <i class="fa-solid fa-chevron-down ml-1 text-sm"></i>
+                </button>
+                <div class="absolute hidden group-hover:block bg-white shadow-md rounded-md mt-2 w-48 py-2 z-10">
+                    <a href="deepSearch.html" class="block px-4 py-2 hover:bg-gray-100 transition-colors hover:text-red-500">Deep Search</a>
+                    <a href="#" id="uploadBtn" class=" block px-4 py-2 hover:bg-gray-100 transition-colors hover:text-red-500">Upload Image</a>
+                    <a href="generateImage.html" class="block px-4 py-2 hover:bg-gray-100 transition-colors hover:text-red-500">Generate Image</a>
+                </div>
+            </div>
+
+                <!-- dark mode toggle -->
+            <button id="theme-toggle" class="p-2 rounded-full hover:bg-amber-500 transition-colors">
+                <i id="theme-icon" class="fa-solid fa-sun text-lg"></i>
+            </button>
+
+
+<!-- login and profile -->
+            <button id="loginBtn" class="bg-red-500 text-white px-3 py-1.5 rounded-full text-base hover:bg-red-600 transition-colors shadow-md">
+                    Login
+            </button>
+            <div id="profileBtn" class="hidden bg-gray-200 w-10 h-10 rounded-full hover:bg-gray-300 transition-colors flex items-center justify-center">
+                <img src="../images/profile.png" alt="Profile" class="rounded-full">
+            </div>
+        </div>
+            
+        <button id="mobile-menu-btn" class="md:hidden p-2 text-gray-700 hover:bg-gray-100 rounded-lg">
+            <i class="fa-solid fa-bars text-2xl"></i>
+        </button>
+    </nav>
+    
+        <!-- <div id="mobile-menu" class="absolute w-full hidden md:hidden bg-white shadow-md border-t">
+            <a href="#" class="block px-6 py-3 font-medium hover:bg-gray-100 transition-colors">About</a>
+            <div class="">
+                <button class="w-full flex justify-between items-center px-6 py-3 font-medium hover:bg-gray-100 transition-colors" id="mobile-collection-btn">
+                    Collection
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div id="mobile-collection" class="hidden bg-gray-50">
+                    <a href="#" class="block px-8 py-2 hover:bg-gray-200 hover:text-red-500">Deep Search</a>
+                    <a href="#" id="uploadBtnMobile" class="hidden block px-8 py-2 hover:bg-gray-200 hover:text-red-500">Upload Image</a>
+                    <a href="generateImage.html" class="block px-8 py-2 hover:bg-gray-200 hover:text-red-500">Generate Image</a>
+                </div>
+            </div>
+            <button id="theme-toggle-mobile" class="p-6 rounded-full hover:bg-amber-500 transition-colors">
+                <i id="theme-icon-mobile" class="fa-solid fa-sun text-lg"></i>
+            </button>
+            <button id="loginBtn-mobile" class="m-4 w-[90%] bg-red-500 text-white px-3 py-1.5 rounded-full text-base hover:bg-red-600 transition-colors shadow-md">Login</button>
+            <button id="profileBtn-mobile" class="hidden m-4 w-[90%] bg-gray-200 text-gray-800 px-3 py-1.5 rounded-full text-base hover:bg-gray-300 transition-colors shadow-md">
+                Profile
+            </button>
+        </div> -->
+   
+        <!-- <section id="authModal" class="fixed inset-0 z-50 modal-container">
+        <button id="closeModal" class="absolute top-8 right-8 text-gray-100 hover:text-white text-3xl font-bold transition-transform hover:scale-110 z-[101]">&times;</button> -->
+        
+        <!-- login and Register -->
+        
+    </section>
+    </header>
+
+<main
+      class="bg-cover-image relative h-96 md:h-80 lg:h-96 text-white flex items-center justify-center p-4"
+    >
+      <div
+        class="absolute inset-0 bg-black opacity-50"
+        aria-hidden="true"
+      ></div>
+      <div class="relative z-10 text-center" data-aos="fade-in">
+        <h1 class="text-4xl md:text-5xl font-bold mb-4 text-red-600">
+          About Explore
+        </h1>
+        <p class="text-lg md:text-xl max-w-2xl mx-auto mb-8 font-semibold">
+          Explore is a platform dedicated to providing high-quality, free-to-use
+          images for everyone. We believe in creativity and accessibility:
+          offering a vast collection of stunning visuals for your projects, big
+          or small.
+        </p>
+        <div class="relative w-full max-w-lg mx-auto" data-aos="fade-up">
+          <input
+            type="text"
+            placeholder="Search..."
+            class="w-full pl-12 pr-4 py-3 rounded-full text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-red-600"
+          />
+          <svg
+            class="h-6 w-6 text-gray-400 absolute left-4 top-1/2 transform -translate-y-1/2"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+            ></path>
+          </svg>
+        </div>
+      </div>
+    </main>
+
+    <section class="py-16 bg-white">
+      <div
+        class="container mx-auto px-4 md:px-8 lg:px-16 grid grid-cols-1 md:grid-cols-2 gap-12 items-center"
+      >
+        <div class="flex flex-col items-center md:items-start text-center md:text-left" data-aos="fade-right">
+          <h2 class="text-3xl font-bold text-red-600 mb-4">Our Mission</h2>
+          <p class="text-gray-700 leading-relaxed mb-6">
+            Our mission is to empower creators worldwide by providing a rich,
+            diverse library of images. We strive to be the go-to source for
+            visual content, making it easier for designers, developers, and
+            storytellers to find the perfect image without any hassle. We are
+            committed to fostering a community where creativity flourishes.
+          </p>
+          <img
+            src="../images/img3.jpg"
+            alt="Person searching for images on a laptop"
+            class="rounded-lg shadow-lg mt-4 w-full md:hidden"
+          />
+        </div>
+        <div class="hidden md:block" data-aos="fade-left">
+          <img
+            src="../images/img5.jpg"
+            alt="Person searching for images on a laptop"
+            class="rounded-lg shadow-lg "
+          />
+        </div>
+      </div>
+      <div
+        class="container mx-auto px-4 md:px-8 lg:px-16 grid grid-cols-1 md:grid-cols-2 gap-12 items-center mt-12"
+      >
+        <div class="hidden md:block" data-aos="fade-right">
+          <img
+            src="../images/img3.jpg"
+            alt="Abstract image generation on a laptop"
+            class="rounded-lg shadow-lg"
+          />
+        </div>
+        <div class="flex flex-col items-center md:items-start text-center md:text-left" data-aos="fade-left">
+          <h2 class="text-3xl font-bold text-red-600 mb-4">Our Vision</h2>
+          <p class="text-gray-700 leading-relaxed mb-6">
+            We envision a world where high-quality images are accessible to
+            everyone, fostering a global creative movement. We aim to build a
+            platform that is not just a repository of images, but a hub of
+            inspiration, innovation, and collaboration. Our goal is to connect
+            creators with the visuals they need to bring their ideas to life.
+          </p>
+          <img
+            src="../images/img1.jpg"
+            alt="Abstract image generation on a laptop"
+            class="rounded-lg shadow-lg mt-4 w-full md:hidden"
+          />
+        </div>
+      </div>
+    </section>
+
+
+<section class="py-16 bg-white">
+      <div class="container mx-auto px-4 md:px-8 lg:px-16 text-center">
+        <h2 class="text-xl font-semibold text-red-600 mb-2" data-aos="fade-up">
+          Our Core Functions
+        </h2>
+        <h3 class="text-4xl font-bold text-red-800 mb-12" data-aos="fade-up" data-aos-delay="100">
+          The Tools to Fuel Your Imagination
+        </h3>
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center"
+        >
+          <div
+            class="bg-white p-8 rounded-xl shadow-lg transition-transform duration-300 hover:scale-105 transform hover:shadow-2xl max-w-sm"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            <div
+              class="card-icon w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 text-red-600"
+            >
+              <svg
+                class="h-8 w-8"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                ></path>
+              </svg>
+            </div>
+            <h4 class="text-xl font-bold text-gray-800 mb-3">Deep Search</h4>
+            <p class="text-gray-600 leading-relaxed">
+              Our intelligent search engine understands natural language,
+              allowing you to find the perfect image in seconds. Whether you're
+              looking for a specific style, color, or a conceptual idea, our
+              technology will deliver precise results from our extensive
+              library.
+            </p>
+          </div>
+          <div
+            class="bg-white p-8 rounded-xl shadow-lg transition-transform duration-300 hover:scale-105 transform hover:shadow-2xl max-w-sm"
+            data-aos="fade-up"
+            data-aos-delay="300"
+          >
+            <div
+              class="card-icon w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 text-red-600"
+            >
+              <svg
+                class="h-8 w-8"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"
+                ></path>
+              </svg>
+            </div>
+            <h4 class="text-xl font-bold text-gray-800 mb-3">
+              Seamless Upload
+            </h4>
+            <p class="text-gray-600 leading-relaxed">
+              Effortlessly add your own visual content to your private library
+              or contribute to our growing community collection. Our platform
+              supports multiple file formats and uses AI to automatically tag
+              and categorize your images for easy organization.
+            </p>
+          </div>
+          <div
+            class="bg-white p-8 rounded-xl shadow-lg transition-transform duration-300 hover:scale-105 transform hover:shadow-2xl max-w-sm"
+            data-aos="fade-up"
+            data-aos-delay="400"
+          >
+            <div
+              class="card-icon w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 text-red-600"
+            >
+              <svg
+                class="h-8 w-8"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+
+Buor Synann, [8/29/2025 1:20 PM]
+d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
+                ></path>
+              </svg>
+            </div>
+            <h4 class="text-xl font-bold text-gray-800 mb-3">
+              AI Image Generation
+            </h4>
+            <p class="text-gray-600 leading-relaxed">
+              Unleash your imagination by creating unique visuals from simple
+              text descriptions. Our powerful AI model can generate stunning,
+              high-quality images in seconds, allowing you to quickly prototype
+              ideas and create original art.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4 md:px-8 lg:px-16 text-center">
+        <h2 class="text-3xl font-bold text-red-800 mb-12" data-aos="fade-up">
+          Meet the Mentors
+        </h2>
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-8 justify-items-center mb-12"
+        >
+          <div
+            class="team-member bg-gray-100 p-6 rounded-xl shadow-lg flex flex-col items-center text-center transition-transform duration-300 hover:scale-105 max-w-xs w-full"
+            data-aos="fade-up"
+          >
+            <div class="w-32 h-32 rounded-full overflow-hidden mb-4">
+              <img
+                src="../images/menter1.jpg"
+                alt="Kim ChansokPheng"
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <h3 class="text-xl font-bold text-gray-800">Kim ChansokPheng</h3>
+            <p class="text-gray-500 mb-4">Full Stack Developer</p>
+            <div
+              class="social-links flex space-x-4 opacity-0 transition-opacity duration-300"
+            >
+              <a href="#" class="text-gray-500 hover:text-blue-500"
+                ><i class="fab fa-twitter"></i
+              ></a>
+              <a href="#" class="text-gray-500 hover:text-blue-700"
+                ><i class="fab fa-linkedin-in"></i
+              ></a>
+              <a href="#" class="text-gray-500 hover:text-gray-800"
+                ><i class="fab fa-github"></i
+              ></a>
+            </div>
+          </div>
+          <div
+            class="team-member bg-gray-100 p-6 rounded-xl shadow-lg flex flex-col items-center text-center transition-transform duration-300 hover:scale-105 max-w-xs w-full"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <div class="w-32 h-32 rounded-full overflow-hidden mb-4">
+              <img
+                src="../images/mentor2.jpg"
+                alt="Sreng Chipor"
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <h3 class="text-xl font-bold text-gray-800">Sreng Chipor</h3>
+            <p class="text-gray-500 mb-4">Full Stack Developer</p>
+            <div
+              class="social-links flex space-x-4 opacity-0 transition-opacity duration-300"
+            >
+              <a href="#" class="text-gray-500 hover:text-blue-500"
+                ><i class="fab fa-twitter"></i
+              ></a>
+              <a href="#" class="text-gray-500 hover:text-blue-700"
+                ><i class="fab fa-linkedin-in"></i
+              ></a>
+              <a href="#" class="text-gray-500 hover:text-gray-800"
+                ><i class="fab fa-github"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+        <h2 class="text-3xl font-bold text-red-800 mb-12" data-aos="fade-up">
+          Meet the Team
+        </h2>
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 justify-items-center"
+        >
+          <div
+            class="team-member bg-gray-100 p-6 rounded-xl shadow-lg flex flex-col items-center text-center transition-transform duration-300 hover:scale-105 max-w-xs"
+            data-aos="fade-up"
+          >
+            <div class="w-32 h-32 rounded-full overflow-hidden mb-4">
+              <img
+
+src="../images/member1.jpg"
+                alt="Buor Synann"
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <h3 class="text-xl font-bold text-gray-800">Buor Synann</h3>
+            <p class="text-gray-500 mb-4">Frontend</p>
+            <div
+              class="social-links flex space-x-4 opacity-0 transition-opacity duration-300"
+            >
+              <a href="#" class="text-gray-500 hover:text-blue-500"
+                ><i class="fab fa-twitter"></i
+              ></a>
+              <a href="#" class="text-gray-500 hover:text-blue-700"
+                ><i class="fab fa-linkedin-in"></i
+              ></a>
+              <a href="#" class="text-gray-500 hover:text-gray-800"
+                ><i class="fab fa-github"></i
+              ></a>
+            </div>
+          </div>
+          <div
+            class="team-member bg-gray-100 p-6 rounded-xl shadow-lg flex flex-col items-center text-center transition-transform duration-300 hover:scale-105 max-w-xs"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <div class="w-32 h-32 rounded-full overflow-hidden mb-4">
+              <img
+                src="../images/member2.jpg"
+                alt="Lim KethyaRavy"
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <h3 class="text-xl font-bold text-gray-800">Lim KethyaRavy</h3>
+            <p class="text-gray-500 mb-4">Frontend</p>
+            <div
+              class="social-links flex space-x-4 opacity-0 transition-opacity duration-300"
+            >
+              <a href="#" class="text-gray-500 hover:text-blue-500"
+                ><i class="fab fa-twitter"></i
+              ></a>
+              <a href="#" class="text-gray-500 hover:text-blue-700"
+                ><i class="fab fa-linkedin-in"></i
+              ></a>
+              <a href="#" class="text-gray-500 hover:text-gray-800"
+                ><i class="fab fa-github"></i
+              ></a>
+            </div>
+          </div>
+          <div
+            class="team-member bg-gray-100 p-6 rounded-xl shadow-lg flex flex-col items-center text-center transition-transform duration-300 hover:scale-105 max-w-xs"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            <div class="w-32 h-32 rounded-full overflow-hidden mb-4">
+              <img
+                src="../images/member3.jpg"
+                alt="Keurt Lim"
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <h3 class="text-xl font-bold text-gray-800">Keurt Lim</h3>
+            <p class="text-gray-500 mb-4">Frontend</p>
+            <div
+              class="social-links flex space-x-4 opacity-0 transition-opacity duration-300"
+            >
+              <a href="#" class="text-gray-500 hover:text-blue-500"
+                ><i class="fab fa-twitter"></i
+              ></a>
+              <a href="#" class="text-gray-500 hover:text-blue-700"
+                ><i class="fab fa-linkedin-in"></i
+              ></a>
+              <a href="#" class="text-gray-500 hover:text-gray-800"
+                ><i class="fab fa-github"></i
+              ></a>
+            </div>
+          </div>
+          <div
+            class="team-member bg-gray-100 p-6 rounded-xl shadow-lg flex flex-col items-center text-center transition-transform duration-300 hover:scale-105 max-w-xs"
+            data-aos="fade-up"
+            data-aos-delay="300"
+          >
+            <div class="w-32 h-32 rounded-full overflow-hidden mb-4">
+              <img
+                src="../images/member4.jpg"
+                alt="Tollah hamadabidin"
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <h3 class="text-xl font-bold text-gray-800">Tollah hamadabidin</h3>
+            <p class="text-gray-500 mb-4">Frontend</p>
+            <div
+              class="social-links flex space-x-4 opacity-0 transition-opacity duration-300"
+            >
+
+
+<a href="#" class="text-gray-500 hover:text-blue-500"
+                ><i class="fab fa-twitter"></i
+              ></a>
+              <a href="#" class="text-gray-500 hover:text-blue-700"
+                ><i class="fab fa-linkedin-in"></i
+              ></a>
+              <a href="#" class="text-gray-500 hover:text-gray-800"
+                ><i class="fab fa-github"></i
+              ></a>
+            </div>
+          </div>
+          <div
+            class="team-member bg-gray-100 p-6 rounded-xl shadow-lg flex flex-col items-center text-center transition-transform duration-300 hover:scale-105 max-w-xs"
+            data-aos="fade-up"
+            data-aos-delay="400"
+          >
+            <div class="w-32 h-32 rounded-full overflow-hidden mb-4">
+              <img
+                src="../images/member5.jpg"
+                alt="Yong Phally"
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <h3 class="text-xl font-bold text-gray-800">Yong Phally</h3>
+            <p class="text-gray-500 mb-4">Frontend</p>
+            <div
+              class="social-links flex space-x-4 opacity-0 transition-opacity duration-300"
+            >
+              <a href="#" class="text-gray-500 hover:text-blue-500"
+                ><i class="fab fa-twitter"></i
+              ></a>
+              <a href="#" class="text-gray-500 hover:text-blue-700"
+                ><i class="fab fa-linkedin-in"></i
+              ></a>
+              <a href="#" class="text-gray-500 hover:text-gray-800"
+                ><i class="fab fa-github"></i
+              ></a>
+            </div>
+          </div>
+          <div
+            class="team-member bg-gray-100 p-6 rounded-xl shadow-lg flex flex-col items-center text-center transition-transform duration-300 hover:scale-105 max-w-xs"
+            data-aos="fade-up"
+            data-aos-delay="500"
+          >
+            <div class="w-32 h-32 rounded-full overflow-hidden mb-4">
+              <img
+                src="../images/member6.jpg"
+                alt="Oeun Chansokhan"
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <h3 class="text-xl font-bold text-gray-800">Oeun Chansokhan</h3>
+            <p class="text-gray-500 mb-4">Frontend</p>
+            <div
+              class="social-links flex space-x-4 opacity-0 transition-opacity duration-300"
+            >
+              <a href="#" class="text-gray-500 hover:text-blue-500"
+                ><i class="fab fa-twitter"></i
+              ></a>
+              <a href="#" class="text-gray-500 hover:text-blue-700"
+                ><i class="fab fa-linkedin-in"></i
+              ></a>
+              <a href="#" class="text-gray-500 hover:text-gray-800"
+                ><i class="fab fa-github"></i
+              ></a>
+            </div>
+          </div>
+          <div
+            class="team-member bg-gray-100 p-6 rounded-xl shadow-lg flex flex-col items-center text-center transition-transform duration-300 hover:scale-105 max-w-xs"
+            data-aos="fade-up"
+            data-aos-delay="600"
+          >
+            <div class="w-32 h-32 rounded-full overflow-hidden mb-4">
+              <img
+                src="../images/member7.jpg"
+                alt="Noun Dane"
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <h3 class="text-xl font-bold text-gray-800">Noun Dane</h3>
+            <p class="text-gray-500 mb-4">Frontend</p>
+            <div
+              class="social-links flex space-x-4 opacity-0 transition-opacity duration-300"
+            >
+              <a href="#" class="text-gray-500 hover:text-blue-500"
+                ><i class="fab fa-twitter"></i
+              ></a>
+              <a href="#" class="text-gray-500 hover:text-blue-700"
+                ><i class="fab fa-linkedin-in"></i
+              ></a>
+              <a href="#" class="text-gray-500 hover:text-gray-800"
+                ><i class="fab fa-github"></i
+              ></a>
+            </div>
+          </div>
+          <div
+
+
+class="team-member bg-gray-100 p-6 rounded-xl shadow-lg flex flex-col items-center text-center transition-transform duration-300 hover:scale-105 max-w-xs"
+            data-aos="fade-up"
+            data-aos-delay="700"
+          >
+            <div class="w-32 h-32 rounded-full overflow-hidden mb-4">
+              <img
+                src="../images/member8.jpg"
+                alt="Vourt SokChea"
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <h3 class="text-xl font-bold text-gray-800">Vourt SokChea</h3>
+            <p class="text-gray-500 mb-4">Frontend</p>
+            <div
+              class="social-links flex space-x-4 opacity-0 transition-opacity duration-300"
+            >
+              <a href="#" class="text-gray-500 hover:text-blue-500"
+                ><i class="fab fa-twitter"></i
+              ></a>
+              <a href="#" class="text-gray-500 hover:text-blue-700"
+                ><i class="fab fa-linkedin-in"></i
+              ></a>
+              <a href="#" class="text-gray-500 hover:text-gray-800"
+                ><i class="fab fa-github"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="bg-red-100 text-gray-800 py-12" data-aos="fade-in">
+      <div
+        class="container mx-auto px-4 md:px-8 lg:px-16 grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left"
+      >
+        <div>
+          <div class="flex items-center justify-center md:justify-start mb-4">
+            <img
+              src="../images/exploreLogo.png"
+              alt="Explore Logo"
+              class="h-20"
+            />
+            <img
+              src="../images/logo.png"
+              alt="Explore Logo"
+              class="h-30"
+            />
+          </div>
+          <p class="text-sm max-w-sm mx-auto md:mx-0">
+            We give you the power to search beyond words and create beyond imagination.
+          </p>
+          <div class="flex justify-center md:justify-start space-x-4 mt-4">
+            <a
+              href="#"
+              class="w-10 h-10 flex items-center justify-center bg-red-600 rounded-full hover:bg-red-700 transition-colors"
+              ><i class="fab fa-facebook-f text-white"></i
+            ></a>
+            <a
+              href="#"
+              class="w-10 h-10 flex items-center justify-center bg-red-600 rounded-full hover:bg-red-700 transition-colors"
+              ><i class="fab fa-twitter text-white"></i
+            ></a>
+            <a
+              href="#"
+              class="w-10 h-10 flex items-center justify-center bg-red-600 rounded-full hover:bg-red-700 transition-colors"
+              ><i class="fab fa-linkedin-in text-white"></i
+            ></a>
+            <a
+              href="#"
+              class="w-10 h-10 flex items-center justify-center bg-red-600 rounded-full hover:bg-red-700 transition-colors"
+              ><i class="fab fa-github text-white"></i
+            ></a>
+          </div>
+        </div>
+        <div class="md:text-center">
+          <h4 class="text-lg font-semibold text-red-600 mb-4 ">Extra links</h4>
+          <ul class="space-y-2">
+            <li><a href="#" class="hover:text-white hover:underline">About</a></li>
+            <li><a href="userProfile.html" class="hover:text-white hover:underline">Profile</a></li>
+            <li><a href="../index.html" class="hover:text-white hover:underline">Upload</a></li>
+            <li><a href="generateImage.html" class="hover:text-white hover:underline">Generate</a></li>
+          </ul>
+        </div>
+        <div class="md:text-right">
+          <h4 class="text-lg font-semibold text-red-600 mb-4">Sponsored by</h4>
+          <img
+            src="../images/istadLogo.png"
+            alt="ISTAD Logo"
+            class="h-20 mx-auto md:ml-auto md:mr-0"
+          />
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        duration: 1000,
+        once: true,
+      });
+    </script>
+
+  </body>
+</html>
